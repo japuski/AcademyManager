@@ -1,6 +1,8 @@
 import lombok.Data;
 import person.Person;
+import person.Student;
 import subject.Subject;
+import utils.StudentHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +25,10 @@ public class Academy {
    }
 
    public void addPerson(Person person) {
+      if (StudentHelper.isStudent(person)) {
+         Student student = (Student) person;
+         ((Student) person).setActiveStudent();
+      }
       persons.add(person);
    }
 
