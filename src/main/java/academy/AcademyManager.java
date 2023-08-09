@@ -1,12 +1,15 @@
+package academy;
+
+import markSource.MarkSource;
+import markSource.MarkSourceCreator;
+import markSource.MarkSourceType;
+import markSource.Score;
 import person.Person;
 import person.Student;
-import subject.Subject;
+import utils.StudentHelper;
 
-import java.time.Year;
+import java.util.ArrayList;
 import java.util.List;
-
-import static java.util.Objects.isNull;
-import static utils.StudentHelper.*;
 
 public class AcademyManager {
 
@@ -16,46 +19,50 @@ public class AcademyManager {
         this.academy = academy;
     }
 
+    // --Academy Manager
+
     // dodawanie osób
-    public void addPerson(Person person){
+    public void addPersonToAcademy(Person person){
+        if (StudentHelper.isStudent(person)) {
+            Student student = (Student) person;
+            ((Student) person).setActiveStudent();
+        }
         academy.addPerson(person);
     }
+
     // dodowanie przedmiotów
-    public void addSubject(Subject subject) {
+    public void addSubjectToAcademy(Subject subject) {
         academy.addSubjects(subject);
     }
 
+    // --SubjectManager
+
+    //add Student to Subject
+    public void addStudentToSubject (Student student, Subject subject){
+        subject.addStudent(student);
+    }
+
+    //add Students to Subject
+    public void addStudentsToSubject(Subject subject, List<Student> students){
+        subject.addStudents(students);
+    }
+
+    //add MarkSource to Subject
+    public void addMarkSourceToSubject(Subject subject, MarkSourceType type, String name, int maxPoints){
+        subject.addMarkSource(type,name,maxPoints);
+    }
+
+    //add score to MarkSource
+    public void addScoreToMarkSource(Subject subject, MarkSource markSource, Student student, int score){
+        subject.addScoreToMarkSource(markSource,student,score);
+    }
+
+    //add scores to MarkSource
+    public void addScoresToMarkSource(Subject subject, MarkSource markSource, ArrayList<Score> scores){
+        subject.addScoresToMarkSource(markSource,scores);
+    }
 
 
-//    //get all subjects from academy
-//    public List<Subject> getAllSubjects(){
-//        return academy.getSubjects();
-//    }
-//
-//    //get all subjects from session
-//    public List<Subject> getAllSubjectsFromSession(Year session){
-//        return academy.getSubjects().stream().filter(subject -> subject.getSession().equals(session)).toList();
-//    }
-//
-//    //get all students from sessions
-//    public List<Person> getAllStudentsFromSession(Year year){
-//        if (isNull(year)) {
-//            throw new RuntimeException("Year cannot be null");
-//        }
-//        return academy.getPersons().stream()
-//                .filter(person -> isStudentFromInitialYear(year, person)).toList();
-//    }
-//
-//    //assign student to subject
-//
-//    //get all students from subject
-//    public List<Student> getAllStudentsFromSubject(int subjectId){
-//        List<Subject> resultList = academy.getSubjects().stream().filter(subject -> subject.getID() == subjectId).toList();
-//        return resultList.get(0).getStudents();
-//    }
-//
-//    //create Test
-//
-//    //get student average
+
 
 }

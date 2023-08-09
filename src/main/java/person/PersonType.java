@@ -1,2 +1,5 @@
-package person;public enum PersonType {
+package person;
+
+public enum PersonType {
+    PROFESOR, STUDENT
 }

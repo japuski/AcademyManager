@@ -1,16 +1,21 @@
 package person;
 
-import lombok.Data;
-
-import java.time.LocalDate;
 import java.time.Year;
 
-public class Student extends Person {
+public final class Student extends Person {
 
-    boolean activeStudent;
+    private boolean activeStudent;
 
     public Student(String name, Year initialYear) {
         super(name, initialYear);
-        activeStudent = false;
     }
+
+    public void setActiveStudent() {
+        this.activeStudent = true;
+    }
+
+    public boolean isActiveStudent() {
+        return activeStudent;
+    }
+
 }

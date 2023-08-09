@@ -1,8 +1,7 @@
+package academy;
+
 import lombok.Data;
 import person.Person;
-import person.Student;
-import subject.Subject;
-import utils.StudentHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,23 +19,19 @@ public class Academy {
       this.subjects = new ArrayList<>();
    }
 
-   public void addSubjects(Subject subject) {
+   protected void addSubjects(Subject subject) {
       subjects.add(subject);
    }
 
-   public void addPerson(Person person) {
-      if (StudentHelper.isStudent(person)) {
-         Student student = (Student) person;
-         ((Student) person).setActiveStudent();
-      }
+   protected void addPerson(Person person) {
       persons.add(person);
    }
 
-   public void changePersonData(){
+   protected void changePersonData(){
 
    }
 
-   public void changeSubjectData(){
+   protected void changeSubjectData(){
 
    }
 }

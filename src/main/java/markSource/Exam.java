@@ -1,20 +1,26 @@
-package test;
+package markSource;
 
-import person.Person;
 import person.Student;
 import utils.StudentHelper;
 
-import java.security.spec.ECField;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Exam implements MarkSource{
 
-    private ArrayList<Score> scores;
-    private final double markWeight = 0.5;
+    private int ID;
+    String name;
     private int maxPoints;
+    private double markWeight = 1;  //czy mogę to wrzucić do Enuma?
+    private ArrayList<Score> scores;
 
-    public Exam(String name, ) {
+
+
+    public Exam(String name, int maxPoints) {
+        this.ID = MarkSourceIDGenerator.generateId();
+        this.name = name;
+        this.maxPoints = maxPoints;
+        this.scores = new ArrayList<Score>();
 
     }
 
@@ -34,8 +40,8 @@ public class Exam implements MarkSource{
     }
 
     @Override
-    public void addScores(HashMap<Student, Integer> scores) {
-
+    public void addScores(ArrayList<Score> scores) {
+        scores.addAll(scores);
     }
 
 }

@@ -1,4 +1,4 @@
-package subject;
+package academy;
 
 public class SubjectIDGenerator {
     private static int id;
